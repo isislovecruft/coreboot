@@ -158,37 +158,37 @@ ifneq ($(NOCOMPILE),1)
 COMPILERFAIL:=0
 IASLFAIL:=0
 
-ifneq ($(CONFIG_ANY_TOOLCHAIN),y)
-# Verify that the coreboot toolchain is being used.
-$(foreach arch,$(sort $(foreach stage,\
-	$(COREBOOT_STANDARD_STAGES),$(ARCH-$(stage)-y))), \
-	$(if $(shell if [ -n "$(CC_$(arch))" ]; then \
-		$(CC_$(arch)) -v 2>&1 | grep -q "coreboot toolchain" || \
-		echo not-coreboot; else echo not-coreboot; fi), \
-		$(eval COMPILERFAIL:=1)\
-		$(warning The coreboot toolchain for '$(arch)'\
-			architecture was not found.)))
+# ifneq ($(CONFIG_ANY_TOOLCHAIN),y)
+# # Verify that the coreboot toolchain is being used.
+# $(foreach arch,$(sort $(foreach stage,\
+# 	$(COREBOOT_STANDARD_STAGES),$(ARCH-$(stage)-y))), \
+# 	$(if $(shell if [ -n "$(CC_$(arch))" ]; then \
+# 		$(CC_$(arch)) -v 2>&1 | grep -q "coreboot toolchain" || \
+# 		echo not-coreboot; else echo not-coreboot; fi), \
+# 		$(eval COMPILERFAIL:=1)\
+# 		$(warning The coreboot toolchain for '$(arch)'\
+# 			architecture was not found.)))
 # If iasl doesn't match the current coreboot version, fail the test
 # TODO: Figure out if iasl is even needed for the build.
-$(if $(shell if [ -n "$(IASL)" ]; then \
-	$(IASL) -v 2>&1 | grep -q "$(shell util/crossgcc/buildgcc -s iasl)" || \
-	echo not-coreboot; else echo not-coreboot; fi), \
-	$(eval COMPILERFAIL:=1)$(eval IASLFAIL:=1)\
-	$(warning The coreboot toolchain version of iasl \
-		'$(shell util/crossgcc/buildgcc -s iasl)' was not found))
-else #$(CONFIG_ANY_TOOLCHAIN)
+# $(if $(shell if [ -n "$(IASL)" ]; then \
+# 	$(IASL) -v 2>&1 | grep -q "$(shell util/crossgcc/buildgcc -s iasl)" || \
+# 	echo not-coreboot; else echo not-coreboot; fi), \
+# 	$(eval COMPILERFAIL:=1)$(eval IASLFAIL:=1)\
+# 	$(warning The coreboot toolchain version of iasl \
+# 		'$(shell util/crossgcc/buildgcc -s iasl)' was not found))
+# else #$(CONFIG_ANY_TOOLCHAIN)
 # If the coreboot toolchain isn't being used, verify that there is A toolchain
-$(foreach arch,$(sort \
-	$(foreach stage,$(COREBOOT_STANDARD_STAGES),$(ARCH-$(stage)-y))), \
-	$(if $(CC_$(arch)),, $(eval COMPILERFAIL:=1) \
-	$(warning No compiler found for '$(arch)' architecture. \
-		Install one or use the coreboot toolchain?)) )
-# If iasl isn't present, fail
-# TODO: Figure out if iasl is even needed for the build.
-$(if $(IASL),, $(eval COMPILERFAIL:=1)$(eval IASLFAIL:=1) \
-	$(warning iasl not found. \
-		Please install it or use the coreboot toolchain.))
-endif
+# $(foreach arch,$(sort \
+# 	$(foreach stage,$(COREBOOT_STANDARD_STAGES),$(ARCH-$(stage)-y))), \
+# 	$(if $(CC_$(arch)),, $(eval COMPILERFAIL:=1) \
+# 	$(warning No compiler found for '$(arch)' architecture. \
+# 		Install one or use the coreboot toolchain?)) )
+# # If iasl isn't present, fail
+# # TODO: Figure out if iasl is even needed for the build.
+# $(if $(IASL),, $(eval COMPILERFAIL:=1)$(eval IASLFAIL:=1) \
+# 	$(warning iasl not found. \
+# 		Please install it or use the coreboot toolchain.))
+# endif
 
 # If the compiler check failed, print out warnings
 ifeq ($(COMPILERFAIL),1)
