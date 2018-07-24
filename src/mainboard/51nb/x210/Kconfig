@@ -1,0 +1,77 @@
+config BOARD_51NB_X210
+	def_bool n
+	select SYSTEM_TYPE_LAPTOP
+	select BOARD_ROMSIZE_KB_8192
+	select HAVE_ACPI_RESUME
+	select HAVE_ACPI_TABLES
+	select SOC_INTEL_KABYLAKE
+
+if BOARD_51NB_X210
+
+config MAINBOARD_VENDOR
+	string
+	default "51nb"
+
+config MAINBOARD_FAMILY
+	string
+	default "X210" if BOARD_51NB_X210_V1
+	default "X210" if BOARD_51NB_X210_V2
+
+config VARIANT_DIR
+	string
+	default "x210" if BOARD_51NB_X210_V1
+	default "x210" if BOARD_51NB_X210_V2
+
+config MAINBOARD_PART_NUMBER
+	string
+	default "X210 v1" if BOARD_51NB_X210_V1
+	default "X210 v2" if BOARD_51NB_X210_V2
+
+config MAINBOARD_VERSION
+	string
+	default "1.0" if BOARD_51NB_X210_V1
+	default "2.0" if BOARD_51NB_X210_V2
+
+config MAINBOARD_DIR
+	string
+	default "51nb/x210"
+
+config MAX_CPUS
+	int
+	default 8
+
+config DEVICETREE
+	string
+	default "variants/x210v2/devicetree.cb" if BOARD_51NB_X210_V1
+	default "variants/x210v2/devicetree.cb" if BOARD_51NB_X210_V2
+
+# "XXX How many slots?"
+config IRQ_SLOT_COUNT
+	int
+	default 18
+
+config VGA_BIOS_ID
+	string
+	default "8086,1916"
+
+config DIMM_MAX
+	int
+	default 1
+
+config DIMM_SPD_SIZE
+	int
+	default 512
+
+config CPU_MICROCODE_CBFS_LEN
+	hex
+	default 0x18000
+
+config CPU_MICROCODE_CBFS_LOC
+	hex
+	default 0xFFE115A0
+
+config CBFS_SIZE
+	hex
+	default 0x5c0000
+
+endif

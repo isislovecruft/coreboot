@@ -1,0 +1,7 @@
+config BOARD_51NB_X210_V1
+	bool "X210 v1 (with full-size SIM card slot)"
+	select BOARD_51NB_X210
+
+config BOARD_51NB_X210_V2
+	bool "X210 v2 (with nano-size SIM card slot)"
+	select BOARD_51NB_X210
