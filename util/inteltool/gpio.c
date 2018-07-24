@@ -896,6 +896,7 @@ int print_gpios(struct pci_dev *sb, int show_all, int show_diffs)
 	case PCI_DEVICE_ID_INTEL_PM55:
 	case PCI_DEVICE_ID_INTEL_QM57:
 	case PCI_DEVICE_ID_INTEL_QS57:
+	case PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP:
 		gpiobase = pci_read_word(sb, 0x48) & 0xff80;
 		gpio_registers = pch_gpio_registers;
 		size = ARRAY_SIZE(pch_gpio_registers);
