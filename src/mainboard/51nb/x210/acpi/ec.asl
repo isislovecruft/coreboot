@@ -90,7 +90,7 @@ Device (EC)
         /* Lid event */
         Method (_Q0E)
         {
-                Store (LIDS, \LIDS)
+                Store (LIDC, \LIDS)
                 Notify (LID0, 0x80)
         }
 
