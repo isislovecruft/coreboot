@@ -248,6 +248,7 @@ static inline uint32_t inl(unsigned port)
 #define PCI_DEVICE_ID_INTEL_CORE_6TH_GEN_M	0x1910 /* Skylake (Mobile) */
 #define PCI_DEVICE_ID_INTEL_CORE_6TH_GEN_WST	0x1918 /* Skylake (Workstation) */
 #define PCI_DEVICE_ID_INTEL_CORE_6TH_GEN_D	0x191f /* Skylake (Desktop) */
+#define PCI_DEVICE_ID_INTEL_CORE_7TH_GEN_M	0x5914 /* Kabylake (Mobile) */
 
 /* Intel GPUs */
 #define PCI_DEVICE_ID_INTEL_G35_EXPRESS		0x2982

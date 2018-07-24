@@ -98,7 +98,7 @@ int print_ahci(struct pci_dev *ahci)
 	}
 
 	if (ahci->device_id == PCI_DEVICE_ID_INTEL_SUNRISEPOINT_SATA ||
-	    ahci->device_id == PCI_DEVICE_ID_INTEL_SUNRISEPOINT_SATA) {
+	    ahci->device_id == PCI_DEVICE_ID_INTEL_SUNRISEPOINT_LP_SATA) {
 		puts("\nOther registers:");
 		for (i = 0x500; i < mmio_size; i += 4) {
 			if (MMIO(i))
