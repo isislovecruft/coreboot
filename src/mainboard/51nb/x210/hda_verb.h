@@ -20,8 +20,8 @@
 
 const u32 cim_verb_data[] = {
 	/* coreboot specific header */
-	0x10ec0269,	/* Codec Vendor / Device ID: Realtek ALC269 */
-	0x19910269,	/* Subsystem ID */
+	0x14f15069,	/* Codec Vendor / Device ID: Conexant CX20585 */
+	0x17aa2155,	/* Subsystem ID */
 	0x0000000c,	/* Number of jacks (NID entries) */
 
 	0x0017ff00,	/* Function Reset */
@@ -34,40 +34,40 @@ const u32 cim_verb_data[] = {
 	/* Bits 19:8 - Verb ID */
 	/* Bits 7:0  - Payload */
 
-	/* NID 0x01, HDA Codec Subsystem ID Verb Table: 0x19910269 */
-	AZALIA_SUBVENDOR(0x0, 0x19910269),
+	/* NID 0x01, HDA Codec Subsystem ID Verb Table: 0x17aa2155 */
+	AZALIA_SUBVENDOR(0x0, 0x17aa2155),
 
 	/* Pin Widget Verb Table */
 
-	/* Pin Complex (NID 0x12) */
-	AZALIA_PIN_CFG(0x0, 0x12, 0x40000000),
-
-	/* Pin Complex (NID 0x14) */
-	AZALIA_PIN_CFG(0x0, 0x14, 0x90170110),
-
-	/* Pin Complex (NID 0x15) */
-	AZALIA_PIN_CFG(0x0, 0x15, 0x04214020),
-
-	/* Pin Complex (NID 0x17) */
-	AZALIA_PIN_CFG(0x0, 0x17, 0x411111f0),
-
-	/* Pin Complex (NID 0x18) */
-	AZALIA_PIN_CFG(0x0, 0x18, 0x04a19040),
-
 	/* Pin Complex (NID 0x19) */
-	AZALIA_PIN_CFG(0x0, 0x19, 0x90a70130),
+	AZALIA_PIN_CFG(0x0, 0x19, 0x042140f0),
 
 	/* Pin Complex (NID 0x1A) */
-	AZALIA_PIN_CFG(0x0, 0x1A, 0x411111f0),
+	AZALIA_PIN_CFG(0x0, 0x1a, 0x61a190f0),
 
 	/* Pin Complex (NID 0x1B) */
-	AZALIA_PIN_CFG(0x0, 0x1B, 0x411111f0),
+	AZALIA_PIN_CFG(0x0, 0x1b, 0x04a190f0),
+
+	/* Pin Complex (NID 0x1C) */
+	AZALIA_PIN_CFG(0x0, 0x1c, 0x612140f0),
 
 	/* Pin Complex (NID 0x1D) */
-	AZALIA_PIN_CFG(0x0, 0x1D, 0x40548505),
+	AZALIA_PIN_CFG(0x0, 0x1d, 0x601700f0),
 
 	/* Pin Complex (NID 0x1E) */
-	AZALIA_PIN_CFG(0x0, 0x1E, 0x411111f0),
+	AZALIA_PIN_CFG(0x0, 0x1e, 0x40f001f0),
+
+	/* Pin Complex (NID 0x1F) */
+	AZALIA_PIN_CFG(0x0, 0x1f, 0x901701f0),
+
+	/* Pin Complex (NID 0x20) */
+	AZALIA_PIN_CFG(0x0, 0x1B, 0x40f001f0),
+
+	/* Pin Complex (NID 0x22) */
+	AZALIA_PIN_CFG(0x0, 0x22, 0x40f001f0),
+
+	/* Pin Complex (NID 0x23) */
+	AZALIA_PIN_CFG(0x0, 0x23, 0x90a601f0),
 };
 
 const u32 pc_beep_verbs[] = {
