@@ -207,8 +207,8 @@ chip soc/intel/skylake
 		device pci 1c.0 on  end # PCI Express Port 1
 		device pci 1c.1 off end # PCI Express Port 2
 		device pci 1c.2 off end # PCI Express Port 3
-		device pci 1c.3 off end # PCI Express Port 4
-		device pci 1c.4 on  end # PCI Express Port 5
+		device pci 1c.3 on  end # PCI Express Port 4
+		device pci 1c.4 off end # PCI Express Port 5
 		device pci 1c.5 off end # PCI Express Port 6
 		device pci 1c.6 off end # PCI Express Port 7
 		device pci 1c.7 off end # PCI Express Port 8
@@ -217,14 +217,11 @@ chip soc/intel/skylake
 		device pci 1d.2 off end # PCI Express Port 11
 		device pci 1d.3 off end # PCI Express Port 12
 		device pci 1f.0 on
-			chip ec/purism/librem
-				device pnp 0c09.0 on end
-			end
 			chip drivers/pc80/tpm
 				device pnp 0c31.0 on end
 			end
 		end # LPC Interface
-		device pci 1f.1 on  end # P2SB
+		device pci 1f.1 off end # P2SB
 		device pci 1f.2 on  end # Power Management Controller
 		device pci 1f.3 on  end # Intel HDA
 		device pci 1f.4 on  end # SMBus
