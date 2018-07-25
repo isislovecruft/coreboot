@@ -26,7 +26,7 @@ Scope (\_SB)
 
 		Method (_LID)
 		{
-			Return (\_SB.PCI0.LPCB.EC.LIDS)
+			Return (\LIDS)
 		}
 	}
 

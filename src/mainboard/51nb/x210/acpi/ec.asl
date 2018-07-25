@@ -129,20 +129,13 @@ Device (EC)
 
                 Method (_STA, 0, NotSerialized)  // _STA: Status
                 {
-                        If (ECFL)
+		        If (B1SS)
                         {
-                                If (B1SS)
-                                {
-                                        Return (0x1F)
-                                    }
-                                    Else
-                                    {
-                                        Return (0x0F)
-                                    }
+                            Return (0x1F)
                         }
                         Else
                         {
-                                Return (0x0F)
+                            Return (0x0F)
                         }
                 }
 
