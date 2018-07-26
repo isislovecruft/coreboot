@@ -24,9 +24,9 @@ chip soc/intel/skylake
 	register "gpe0_dw1" = "GPP_D"
 	register "gpe0_dw2" = "GPP_E"
 
-	# EC host command ranges are in 0x380-0x383 & 0x80-0x8f
-	register "gen1_dec" = "0x00000381"
-	register "gen2_dec" = "0x000c0081"
+	# EC host command ranges are in 0x80-0x8f & 0x680-0x68f
+	register "gen1_dec" = "0x000c0081"
+	register "gen2_dec" = "0x000c0681"
 
 	# Enable "Intel Speed Shift Technology"
 	register "speed_shift_enable" = "1"
@@ -60,7 +60,7 @@ chip soc/intel/skylake
 	register "InternalGfx" = "1"
 	register "SkipExtGfxScan" = "1"
 	register "Device4Enable" = "1"
-	register "HeciEnabled" = "0"
+	register "HeciEnabled" = "1"
 	register "SaGv" = "3"
 	register "SerialIrqConfigSirqEnable" = "1"
 	register "PmConfigSlpS3MinAssert" = "2"		# 50ms
@@ -154,29 +154,23 @@ chip soc/intel/skylake
 		.dc_loadline = 420,
 	}"
 
-	# Enable Root Ports 5 and 9
-	register "PcieRpEnable[4]" = "1"
+	# Enable Root Ports 1, 4 and 9
+	register "PcieRpEnable[0]" = "1"
+	register "PcieRpEnable[3]" = "1"
 	register "PcieRpEnable[8]" = "1"
 	# Enable CLKREQ# for RP9
 	register "PcieRpClkReqSupport[8]" = "0"
 	# ClkReq for NVMe - Bruteforced (no other value works)
 	register "PcieRpClkReqNumber[8]" = "2"
 
-	register "usb2_ports[0]" = "USB2_PORT_TYPE_C(OC_SKIP)"	# Type-C Port
-	register "usb2_ports[1]" = "USB2_PORT_MID(OC1)"		# Type-A Port (right)
-	register "usb2_ports[2]" = "USB2_PORT_MID(OC1)"		# Type-A Port (right)
-	register "usb2_ports[3]" = "USB2_PORT_FLEX(OC2)"	# Type-A Port (left)
-	register "usb2_ports[4]" = "USB2_PORT_FLEX(OC2)"	# Type-A Port (left)
-	register "usb2_ports[5]" = "USB2_PORT_MID(OC_SKIP)"	# Bluetooth
-	register "usb2_ports[6]" = "USB2_PORT_FLEX(OC_SKIP)"	# Camera
-	register "usb2_ports[7]" = "USB2_PORT_FLEX(OC_SKIP)"	# SD
+	register "usb2_ports[1]" = "USB2_PORT_MID(OC1)"		# Type-A Port (left)
+	register "usb2_ports[2]" = "USB2_PORT_MID(OC1)"		# Type-A Port (left)
+	register "usb2_ports[6]" = "USB2_PORT_FLEX(OC2)"	# Type-A Port (right)
+	register "usb2_ports[7]" = "USB2_PORT_FLEX(OC_SKIP)"	# Camera
+	register "usb2_ports[8]" = "USB2_PORT_FLEX(OC_SKIP)"	# Wireless
 
-	# OC0 should be for Type-C but it seems to not have been wired, according to
-	# the available schematics, even though it is labeled as USB_OC_TYPEC.
-	register "usb3_ports[0]" = "USB3_PORT_DEFAULT(OC_SKIP)"	# Type-C Port
-	register "usb3_ports[1]" = "USB3_PORT_DEFAULT(OC1)"	# Type-A Port (right)
-	register "usb3_ports[2]" = "USB3_PORT_DEFAULT(OC1)"	# Type-A Port (right)
-	register "usb3_ports[3]" = "USB3_PORT_DEFAULT(OC_SKIP)"	# Type-C Port
+	register "usb3_ports[1]" = "USB3_PORT_DEFAULT(OC1)"	# Type-A Port (left)
+	register "usb3_ports[2]" = "USB3_PORT_DEFAULT(OC1)"	# Type-A Port (left)
 
 	# PL2 override 25W
 	register "tdp_pl2_override" = "25"
